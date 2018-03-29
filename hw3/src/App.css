@@ -1,0 +1,43 @@
+.App {
+  //text-align: center;
+  border: 2px solid green;
+  background-color: #71d496;
+}
+
+.App-header {
+  text-align: center;
+  background-color: #222;
+  height: auto;
+  padding: 20px;
+  color: white;
+}
+
+.App-main {
+  margin: 5px 20px;
+}
+
+.App-main-div {
+  background-color: #dfe924;
+  border: 2px solid blue;
+  margin: 5px 0;
+}
+
+.App-main-div p {
+  color: #34550a;
+}
+
+.App-footer {
+  text-align: center;
+  background-color: #9bcdb5;
+  height: auto;
+  padding: 10px;
+  color: white;
+}
+
+.App-button-main {
+  text-align: center;
+}
+
+.App-button-main button {
+  margin: 0 25px;
+}
