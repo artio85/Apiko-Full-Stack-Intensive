@@ -7,29 +7,54 @@ class Main extends Component {
     super(props);
     this.state = {
       items: [],
-      index : 10,
+      index : 0,
+      show: true,
+      showText: "ToSee all List",
     };
     this.increment = this.increment.bind(this);
     this.decrement = this.decrement.bind(this);
+    this.allList = this.allList.bind(this);
   }
 
   increment (){
     let temp = this.state.index ;
-    if(temp <= this.props.items.length){
-      this.setState({index: this.state.index + 10});
-      for (var i = temp - 10; i < this.state.index; i++) {
+    if(this.state.index <= this.props.items.length){
+      console.log(temp);
+      console.log(this.props.items.length);
+      console.log(this.state.index);
+      for (var i = temp ; i < temp + 10; i++) {
         this.state.items.push(this.props.items[i]);
       }
+      this.setState({index: this.state.index + 10});
+      console.log(this.state.index);
     }
   }
 
   decrement (){
     let temp = this.state.index ;
-    if(temp >= 20){
-      this.setState({index: this.state.index - 10});
+    if(temp >= 10){
+      console.log(temp);
+      console.log(this.props.items.length);
+      console.log(this.state.index);
       for (var i = 0; i < 10; i++) {
         this.state.items.pop();
       }
+      this.setState({index: this.state.index - 10});
+      console.log(this.state.index);
+    }
+  }
+
+  allList (){
+    if(this.state.show){
+      this.setState({index: this.props.items.length});
+      this.setState({items: this.props.items});
+      this.setState({showText: "Hide the List"});
+      this.setState({show: !this.state.show});
+    } else{
+      this.setState({index: 10});
+      this.setState({items: []});
+      this.setState({showText: "ToSee all List"});
+      this.setState({show: !this.state.show});
     }
   }
 
@@ -45,16 +70,17 @@ class Main extends Component {
     return (
       <div className="App-main">
         {this.state.items.map((items , index) =>
-          <div key={ index } className="App-main-div">
-            <p>Post number : { index + 1 }</p>
-            <p>Post title : { items.title }</p>
-            <p>From user : { items.userId }</p>
-            <p>{ items.body }</p>
+          <div key={index} className="App-main-div">
+            <p>Post number : {index + 1}</p>
+            <p>Post title : {items.title}</p>
+            <p>From user : {items.userId}</p>
+            <p>{items.body}</p>
           </div>
         )}
         <div className="App-button-main">
-          <button onClick={this.increment}>See more then {this.state.index - 10}</button>
-          <button onClick={this.decrement}>See less then {this.state.index - 10}</button>
+          <button onClick={this.increment}>ToSee more then {this.state.index}</button>
+        <button onClick={this.decrement}>ToSee less then {this.state.index}</button>
+        <button onClick={this.allList}>{this.state.showText}</button>
         </div>
       </div>
     );
