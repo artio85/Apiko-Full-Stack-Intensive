@@ -18,29 +18,30 @@ class Main extends Component {
 
   increment (){
     let temp = this.state.index ;
-    if(this.state.index <= this.props.items.length){
-      console.log(temp);
-      console.log(this.props.items.length);
-      console.log(this.state.index);
+    if(this.state.index <= this.props.items.length - 10){
+
+      console.log('index - ' + this.state.index);
+      console.log('show - ' + this.state.show);
+      console.log('showText - ' + this.state.showText);
+      console.log('items.length - ' + this.props.items.length);
       for (var i = temp ; i < temp + 10; i++) {
         this.state.items.push(this.props.items[i]);
       }
       this.setState({index: this.state.index + 10});
-      console.log(this.state.index);
     }
   }
 
   decrement (){
     let temp = this.state.index ;
     if(temp >= 10){
-      console.log(temp);
-      console.log(this.props.items.length);
-      console.log(this.state.index);
+      console.log('index - ' + this.state.index);
+      console.log('show - ' + this.state.show);
+      console.log('showText - ' + this.state.showText);
+      console.log('items.length - ' + this.props.items.length);
       for (var i = 0; i < 10; i++) {
         this.state.items.pop();
       }
       this.setState({index: this.state.index - 10});
-      console.log(this.state.index);
     }
   }
 
@@ -50,11 +51,19 @@ class Main extends Component {
       this.setState({items: this.props.items});
       this.setState({showText: "Hide the List"});
       this.setState({show: !this.state.show});
+      console.log('index - ' + this.state.index);
+      console.log('show - ' + this.state.show);
+      console.log('showText - ' + this.state.showText);
+      console.log('items.length - ' + this.props.items.length);
     } else{
-      this.setState({index: 10});
+      this.setState({index: 0});
       this.setState({items: []});
       this.setState({showText: "ToSee all List"});
       this.setState({show: !this.state.show});
+      console.log('index - ' + this.state.index);
+      console.log('show - ' + this.state.show);
+      console.log('showText - ' + this.state.showText);
+      console.log('items.length - ' + this.props.items.length);
     }
   }
 
