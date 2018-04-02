@@ -7,18 +7,18 @@ import Footer from './Components/Footer/Footer.js'
 import data from './File/json/data.json'
 import './App.css'
 
-Header.propTypes = {
+Main.propTypes = {
   items: PropTypes.array.isRequired,
 };
 
 class App extends Component {
 
   render() {
-    console.log(data);
+    //console.log(data);
     return (
       <div className="App">
         <Header />
-        <Main items={ data }/>
+        <Main items={data}/>
         <Footer />
       </div>
     );

@@ -10,6 +10,7 @@ class Main extends Component {
       index : 0,
       show: true,
       showText: "ToSee all List",
+      dispaly: "",
     };
     this.increment = this.increment.bind(this);
     this.decrement = this.decrement.bind(this);
@@ -23,11 +24,12 @@ class Main extends Component {
       console.log('index - ' + this.state.index);
       console.log('show - ' + this.state.show);
       console.log('showText - ' + this.state.showText);
-      console.log('items.length - ' + this.props.items.length);
-      for (var i = temp ; i < temp + 10; i++) {
+      console.log('props.items.length - ' + this.props.items.length);
+      for (let i = temp ; i < temp + 10; i++) {
         this.state.items.push(this.props.items[i]);
       }
       this.setState({index: this.state.index + 10});
+      this.setState({display: ""});
     }
   }
 
@@ -37,8 +39,8 @@ class Main extends Component {
       console.log('index - ' + this.state.index);
       console.log('show - ' + this.state.show);
       console.log('showText - ' + this.state.showText);
-      console.log('items.length - ' + this.props.items.length);
-      for (var i = 0; i < 10; i++) {
+      console.log('props.items.length - ' + this.props.items.length);
+      for (let i = 0; i < 10; i++) {
         this.state.items.pop();
       }
       this.setState({index: this.state.index - 10});
@@ -54,7 +56,7 @@ class Main extends Component {
       console.log('index - ' + this.state.index);
       console.log('show - ' + this.state.show);
       console.log('showText - ' + this.state.showText);
-      console.log('items.length - ' + this.props.items.length);
+      console.log('props.items.length - ' + this.props.items.length);
     } else{
       this.setState({index: 0});
       this.setState({items: []});
@@ -63,7 +65,7 @@ class Main extends Component {
       console.log('index - ' + this.state.index);
       console.log('show - ' + this.state.show);
       console.log('showText - ' + this.state.showText);
-      console.log('items.length - ' + this.props.items.length);
+      console.log('props.items.length - ' + this.props.items.length);
     }
   }
 
@@ -87,9 +89,8 @@ class Main extends Component {
           </div>
         )}
         <div className="App-button-main">
-          <button onClick={this.increment}>ToSee more then {this.state.index}</button>
-        <button onClick={this.decrement}>ToSee less then {this.state.index}</button>
-        <button onClick={this.allList}>{this.state.showText}</button>
+          <button onClick={this.increment}>{this.state.index<this.props.items.length?`ToSee more then ${this.state.index}`:'Full posts list'}</button>
+          <button onClick={this.decrement}>{this.state.index>0?`ToSee less then ${this.state.index}`:'No one posts'}</button>
         </div>
       </div>
     );
@@ -97,3 +98,9 @@ class Main extends Component {
 }
 
 export default Main;
+
+/*
+<button onClick={this.increment}>{this.state.index<this.props.items.length?`ToSee more then ${this.state.index}`:'Full posts list'}</button>
+<button onClick={this.decrement}>{this.state.index>0?`ToSee less then ${this.state.index}`:'No one posts'}</button>
+<button onClick={this.allList}>{this.state.showText}</button>
+*/
