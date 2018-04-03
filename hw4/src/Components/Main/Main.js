@@ -36,6 +36,10 @@ class Main extends Component {
       }
       this.setState({index: this.state.index + 10});
     }
+    /*var newChangeList = this.props.items.filter( (items, index) =>
+      index >= this.state.index && index < this.state.index + 10
+    );
+    this.setState({items: newChangeList , index: this.state.index + 10});*/
   }
 
   decrement (){
@@ -50,6 +54,10 @@ class Main extends Component {
       }
       this.setState({index: this.state.index - 10});
     }
+    /*var newChangeList = this.props.items.filter( (items, index) =>
+      index < this.state.index && index >= this.state.index - 10
+    );
+    this.setState({items: newChangeList , index: this.state.index - 10});*/
   }
 
   handleChange ({target : {name, value}}){
