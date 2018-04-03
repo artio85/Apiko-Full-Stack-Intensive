@@ -9,7 +9,12 @@ import './App.css'
 
 Main.propTypes = {
   //items: PropTypes.array.isRequired,
-  items: PropTypes.array,
+  items: PropTypes.array.isRequired[{
+    userId: PropTypes.number.isRequired,
+    id: PropTypes.number.isRequired,
+    title: PropTypes.string.isRequired,
+    body: PropTypes.string.isRequired,
+  }],
 };
 
 class App extends Component {

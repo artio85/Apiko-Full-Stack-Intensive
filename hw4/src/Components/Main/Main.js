@@ -17,6 +17,13 @@ class Main extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
+  componentDidMount (){
+    var mainList = this.props.items.filter( (items, index) =>
+      index < 10
+    );
+    this.setState({items: mainList , index: 10});
+  }
+
   increment (){
     let temp = this.state.index ;
     if(this.state.index <= this.props.items.length - 10){
@@ -47,15 +54,16 @@ class Main extends Component {
 
   handleChange ({target : {name, value}}){
     this.setState({[name]: value});
-    let displayResult = this.props.items.filter( (items, index) =>
+    let displaySearch = this.props.items.filter( (items, index) =>
       items.title.toLowerCase().indexOf(value.toLowerCase()) !== -1 && index < this.state.index
     );
-    this.setState({items: displayResult});
+    this.setState({items: displaySearch});
   }
 
   static defaultProps = {
     items: [{
       userId: 0,
+      id: 0,
       title: '/test',
       body: 'test',
     }],
@@ -66,7 +74,7 @@ class Main extends Component {
       <React.Fragment>
       <div className="App-header">
         <p>List of coments</p>
-        <input type='text' name='search' value={this.state.search} placeholder='Search' onChange={this.handleChange}/>
+      <input type='text' name='search' value={this.state.search} placeholder='Search the posts' onChange={this.handleChange}/>
       </div>
       <div className="App-main">
         {this.state.items.map((items , index) =>
