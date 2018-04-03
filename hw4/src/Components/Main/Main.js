@@ -86,8 +86,8 @@ class Main extends Component {
           </div>
         )}
         <div className="App-button-main">
-          <button onClick={this.increment}>{this.state.index<this.props.items.length?`ToSee more then ${this.state.index}`:'Full posts list'}</button>
-          <button onClick={this.decrement}>{this.state.index>0?`ToSee less then ${this.state.index}`:'No one post'}</button>
+          <button onClick={this.increment}>{this.state.index==0?'ToSee more posts':this.state.index<this.props.items.length?`ToSee more then (${this.state.index})`:'Full posts list'}</button>
+          <button onClick={this.decrement}>{this.state.index>0?`ToSee less then (${this.state.index})`:'No one post'}</button>
         </div>
       </div>
       </React.Fragment>
