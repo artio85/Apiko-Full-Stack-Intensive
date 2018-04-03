@@ -71,7 +71,7 @@ class Main extends Component {
       <div className="App-main">
         {this.state.items.map((items , index) =>
           <div key={index} className="App-main-div">
-            <p>Post number : {index + 1}</p>
+            <p>Post number : {items.id}</p>
             <p>Post title : {items.title}</p>
             <p>From user : {items.userId}</p>
             <p>{items.body}</p>
