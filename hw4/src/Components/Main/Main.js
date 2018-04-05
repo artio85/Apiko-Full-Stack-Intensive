@@ -9,12 +9,13 @@ class Main extends Component {
       items: [],
       index : 0,
       show: true,
+      noOnePosts: false,
       showText: "ToSee all List",
       search: '',
     };
     this.increment = this.increment.bind(this);
     this.decrement = this.decrement.bind(this);
-    this.handleChange = this.handleChange.bind(this);
+    this.handleSearch = this.handleSearch.bind(this);
   }
 
   componentDidMount (){
@@ -60,12 +61,16 @@ class Main extends Component {
     this.setState({items: newChangeList , index: this.state.index - 10});*/
   }
 
-  handleChange ({target : {name, value}}){
+  handleSearch ({target : {name, value}}){
     this.setState({[name]: value});
     let displaySearch = this.props.items.filter( (items, index) =>
       items.title.toLowerCase().indexOf(value.toLowerCase()) !== -1 && index < this.state.index
     );
     this.setState({items: displaySearch});
+    console.log(displaySearch);
+    if (displaySearch.length == 0) {
+      this.setState({noOnePosts: true});
+    }else this.setState({noOnePosts: false});
   }
 
   static defaultProps = {
@@ -82,9 +87,11 @@ class Main extends Component {
       <React.Fragment>
       <div className="App-header">
         <p>List of coments</p>
-      <input type='text' name='search' value={this.state.search} placeholder='Search the posts' onChange={this.handleChange}/>
+      <input type='text' name='search' value={this.state.search} placeholder='Search the posts' onChange={this.handleSearch}/>
       </div>
+      {this.postsNotFound}
       <div className="App-main">
+        {this.state.noOnePosts && <p className="App-noPost">The posts with such name are not found</p>}
         {this.state.items.map((items , index) =>
           <div key={index} className="App-main-div">
             <p>Post number : {items.id}</p>
